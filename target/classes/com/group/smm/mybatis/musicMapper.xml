@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="musicMapper">
+	<!-- 전체 음악 목록 조회  mysql:세미콜론 필요. Oracle:세미콜론 필요없음-->
+	<select id="getAllMusic" resultType="com.group.smm.models.MusicVO">
+		SELECT * FROM MUSIC ORDER BY MUSIC_ID;
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
