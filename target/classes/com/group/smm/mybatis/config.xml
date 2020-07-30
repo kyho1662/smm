@@ -5,7 +5,9 @@
 <configuration>
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="defaultEnumTypeHandler" value="String" />
 	</settings>
+	
 
   <environments default="development">
     <environment id="development">

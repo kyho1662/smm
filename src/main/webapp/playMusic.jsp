@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header id="main-header" class="bg-success text-white p-4 mb-3">
+<header id="main-header" class="bg-dark text-white p-4 mb-3">
     <div class="container">
         <h1 id="header-title">Music</h1>
         <tr id="button-group">
@@ -28,6 +28,7 @@
     <div id="main" class="card card-body">
         <button id="button">Get Music</button>
         <ul id="music-list" class="list-group"></ul>
+        <ul id="play-list" class="list-group"></ul>
     </div>
 </div>
 <!--<button id="button">Load Posts</button>-->
@@ -37,26 +38,33 @@
 
 	// Music Class
 	class Music {
-		constructor(url, title, genre, singer) {
+		constructor(url, title, genre, artistId) {
 			this.url = url;
 			this.title = title;
 			this.genre = genre;
-			this.singer = singer;
+			this.artistId = artistId;
 		}
 	};
   	// Create event listener
-  	document.getElementById('button').addEventListener('click', loadText);
+  	 //document.getElementById('button').addEventListener('click', loadMusic);
 
-  	function loadText() {
+  	//loadMusic(1);
+  	loadList(1);
+  	//loadMusic();
+  	
+  	function loadMusic(musicId) {
+  		
+  		const testMusicId = musicId;
   		console.log('button clicked');
   		// Create XHR Object
   		let xhr = new XMLHttpRequest();
 
+  		
   		// OPEN - type, url/file, async
 
   		console.log(xhr);
 
-  		xhr.open('GET', 'http://localhost:8080/smm/play', true);
+  		xhr.open('GET', 'http://localhost:8080/smm/music?musicId=' + testMusicId, true);
 
   		xhr.onload = function() {
   			if(this.status == 200) {
@@ -72,12 +80,18 @@
   	            const row = document.createElement('li');
 
   	            row.className = 'list-group-item';
+  	            
+  	        	row.innerHTML = `<iframe width="500" height="300" src=${music.url} frameborder="0" allowfullscreen></iframe><br>
+    				<span>${music.title}</span>
+    				<span>${music.artistId}</span>
+    				<span>${music.genre}</span>`;
 
+  	            /*
   	            row.innerHTML = `<iframe width="500" height="300" src=${music[0].url} frameborder="0" allowfullscreen></iframe><br>
-  				<span>${music[0].title}</span>
+  				<span>${music[0].musicName}</span>
   				<span>${music[0].singer}</span>
   				<span>${music[0].genre}</span>`;
-
+				*/
   	            list.appendChild(row);
   				
 
@@ -87,7 +101,40 @@
 
       // Sends request
   		xhr.send();
-  	}
+  	};
+  	
+ // @desc Get playlist by playlist id
+function loadList(e) {
+	 
+		e.preventDefault();
+  		
+  		const testPlayListId = playListId;
+  		console.log('button clicked');
+  		// Create XHR Object
+  		let xhr = new XMLHttpRequest();
+
+  		// OPEN - type, url/file, async
+
+  		console.log(xhr);
+
+  		xhr.open('GET', 'http://localhost:8080/smm/playList?playListId=' + testPlayListId, true);
+
+  		xhr.onload = function() {
+  			if(this.status == 200) {
+  				rt = this.responseText;
+  				console.log(rt);
+  				
+  				const playList = JSON.parse(rt);
+  				
+  				playList.musics.forEach(music => {
+  					loadMusic(music.musicId);
+  				});
+  			}
+  		}
+
+      // Sends request
+  		xhr.send();
+  	};
 
   	// HTTP Statuses
   	// 200 : "OK"

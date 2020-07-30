@@ -16,6 +16,18 @@
   	<description></description>
   	<servlet-class>com.group.smm.controllers.PlayPageServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PlayList</servlet-name>
+  	<display-name>PlayList</display-name>
+  	<description></description>
+  	<servlet-class>com.group.smm.controllers.PlayList</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PlayListServlet</servlet-name>
+  	<display-name>PlayListServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.group.smm.controllers.PlayListServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>PlayServlet</servlet-name>
   	<url-pattern>/PlayServlet</url-pattern>
@@ -23,5 +35,13 @@
   <servlet-mapping>
   	<servlet-name>PlayPageServlet</servlet-name>
   	<url-pattern>/PlayPageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PlayList</servlet-name>
+  	<url-pattern>/PlayList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PlayListServlet</servlet-name>
+  	<url-pattern>/PlayListServlet</url-pattern>
   </servlet-mapping>
 </web-app>

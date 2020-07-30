@@ -2,30 +2,27 @@ package com.group.smm.models;
 
 public class MusicVO {
 	
-	String url;
-	String title;
-	String genre;
-	String singer;
+	private int musicId;
+	private String genre;
+	private String title;
+	private int artistId;
+	private String url;
 	
 	
-	public MusicVO(String url, String title, String genre, String singer) {
-		super();
-		this.url = url;
-		this.title = title;
-		this.genre = genre;
-		this.singer = singer;
+	
+//	public MusicVO(String genre, String musicName, int artistId, String url) {
+//		super();
+//		this.genre = genre;
+//		this.musicName = musicName;
+//		this.artistId = artistId;
+//		this.url = url;
+//	}
+	
+	public int getMusicId() {
+		return musicId;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setMusicId(int musicId) {
+		this.musicId = musicId;
 	}
 	public String getGenre() {
 		return genre;
@@ -33,10 +30,22 @@ public class MusicVO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getSinger() {
-		return singer;
+	public String getTitle() {
+		return title;
 	}
-	public void setSinger(String singer) {
-		this.singer = singer;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getArtistId() {
+		return artistId;
+	}
+	public void setArtistId(int artistId) {
+		this.artistId = artistId;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
